@@ -1,0 +1,120 @@
+\section{Language}
+\label{sec:language}
+
+The Modal Language \system{K}{n}{} is equivalent to its set of \emph{well-formed
+formulae}, denoted \wff, which is constructed from an enumerable set of
+\emph{propositional symbols}:
+\begin{equation}
+    \label{eq:prop_symb}
+    \mathcal{P} = \{p, q, r, \ldots\},
+\end{equation}
+the negation symbol $\neg$, the disjunction symbol $\lor$ and the modal
+connective $\nec{a}$, that expresses the notion of necessity, for each index (or
+agent) $a$ in a finite, fixed set:
+\begin{equation}
+    \label{eq:agents}
+    \mathcal{A} = \{1, \ldots, n\}, n \in
+    \mathbb{N}
+\end{equation}
+
+The propositional symbols combined with the logic operators, represented by the
+symbols mentioned above, are arranged to form sentences (also, parentheses can
+be used to avoid ambiguity). Therefore, the set of \wff~is recursively defined
+as showed in~\ref{def:wff}.
+
+\begin{definition}
+\label{def:wff}
+    The set of well-formed formulae, \wff, is the least set such that:
+    \begin{enumerate}
+        \item $\mathcal{P} \subset \wff$
+            \vspace{.2ex}
+        \item if $\varphi, \psi \in \wff$, then so are $\neg \varphi, (\varphi
+            \lor \psi)$ and $\nec{a} \varphi$, for each $a \in \Agents$
+    \end{enumerate}
+\end{definition}
+
+As one might know, other logic operators may be introduced as abbreviation to
+formulae constructed using the operators defined as the usual. In particular,
+this paper considers the following abbreviations:
+\begin{enumerate}
+    \item $\varphi \wedge \psi = \neg(\neg \varphi \lor \neg \psi)$
+        (conjuction) 
+    \item $\varphi \then \psi = \neg \varphi \lor \psi$ (implication)
+    \item $\varphi \iff \psi = (\varphi \then \psi) \land (\psi \then \varphi)$
+        (equivalence)
+    \item $\pos{a} \varphi = \neg \nec{a} \neg \varphi$ (possibility)
+    \item $\textbf{false} = \varphi \wedge \neg \varphi$ (\emph{falsum})
+    \item $ \textbf{true} = \neg \textbf{false}$ (\emph{verum})
+\end{enumerate}
+And the precedence of the operators is as follows: 
+\begin{enumerate}
+    \item $\neg, \nec{a}, \pos{a}$
+    \item $\wedge$
+    \item $\lor$ 
+    \item $\then, \iff$
+\end{enumerate}
+
+Logics that involve $n$ agents in the modal logic, with $n \in \Nat$, are know
+as Multimodal Logics. When $n = 1$, we often omit the index in the modal
+operators, i.e., we just write $\nec{}$ and $\pos{}$.
+
+
+The maximal number of modal operators in a formula is defined as its \emph{modal
+depth} and denoted $mdepth$. The maximal number of modal operators in which
+scope the formula occurs is defined as the \emph{modal level} of that formula,
+and it is denoted $mlevel$.
+For instance, in $\nec{a}\pos{a} p$, $mdepth(p) = 0$ and $mlevel(p) = 2$.
+
+\subsection{Semantics}
+\label{sec:semantics}
+
+\begin{definition}
+    A Kripke model for the set of propositional symbols \prop~and the agents
+    \Agents~is given by the tuple $\Model = (W, \st_0, R_1, \ldots, R_n, \pi)$,
+    where $W$ is a non-empty set of possible worlds with a distinguinshed world
+    $\st_0$, each $R_a, a \in \Agents$, is a binary relation on $W$, and $\pi: W
+    \times \prop \longrightarrow \{false, true\}$ is the valuation function that
+    associates to each world $w \in W$ a truth-assignment to propositional
+    symbols.
+\end{definition}
+
+From the definition of a Kripke model, one can define the satisfiability and
+validity of a formula in \system{K}{n}{}.
+
+\begin{definition}
+    Let $\Model = (W, \st_0, R_1, \ldots, R_n, \pi)$ be a Kripke model for
+    \prop~and \Agents, and consider $\st \in W, p \in \prop$ and $\formula,
+    \psi \in \wff$. The \emph{satisfiability relation}, denoted by 
+    \sat{\Model}{\st}{\formula}, among the world \st~and a formula \formula~in
+    the model \Model,
+    is inductively defined by:
+    \begin{enumerate}
+        \item \sat{\Model}{\st}{p} if, and only if, $\pi(\st, p) = \textbf{true}$ 
+        \item \sat{\Model}{\st}{\neg\formula} if, and only if, $
+            \langle \Model, \st \rangle \not \models \formula$
+        \item \sat{\Model}{\st}{\formula\lor\psi} if, and only if,
+            \sat{\Model}{\st}{\formula} or \sat{\Model}{\st}{\psi}
+        \item \sat{\Model}{\st}{\nec{a} \formula} if, and only if, $\forall~t\in
+            W$, with $a \in \Agents$, $(\st, t) \in R_a$ implies
+            \sat{\Model}{t}{\formula}
+    \end{enumerate}
+\end{definition}
+
+A set of formulae $\Gamma = \{\gamma_1, \ldots, \gamma_r\}, r \in \Nat$, is
+satisfiable in a world \st~if, and only if, each of its formulae is satisfiable
+in this world, i.e., \sat{\Model}{\st}{\Gamma}
+$\iff$ \sat{\Model}{\st}{\gamma_1\land\ldots\land\gamma_r}
+
+\begin{definition} % SATISFIABILITY
+    A formula $\formula \in \wff$ is said to be \emph{satisfiable} if exists a
+    Kripke model \Model~such that \sat{\Model}{\st_0}{\formula}.
+\end{definition}
+
+\begin{definition} % VALIDITY
+    A formula $\formula \in \wff$ is said to be \emph{valid} if for all Kripke
+    model \Model, we have that \sat{\Model}{\st_0}{\formula}.
+\end{definition}
+
+When one is considering a set of formulae instead of a single one, both
+definitions of satisfiability and validity holds similarly to the definition of
+satisfiability relation.

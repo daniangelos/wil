@@ -1,0 +1,96 @@
+\newcommand{\agent}{\ensuremath{a}}
+\newcommand{\Agents}{\ensuremath{{\mathcal{A}}}}
+\newcommand{\prop}{\ensuremath{{\mathcal{P}}}}
+\newcommand{\wff}{\ensuremath{WFF}\raisebox{-.8ex}{\system{K}{n}{}}}
+\newcommand{\sat}[3]{\ensuremath{\langle #1, #2 \rangle \models #3}}
+\newcommand{\Model}{\ensuremath{\mathcal{M}}}
+\newcommand{\formula}{\ensuremath{\varphi}}
+\renewcommand{\iff}{\Leftrightarrow}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\newenvironment{proof2}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+
+\ifx\fmtname\@psfmtname \else \def\cmsy@{2}\fi % make sure we get cmsy
+\def\sometime{\mathord{\hbox{\large$\mathchar"0\cmsy@7D$}}}
+
+
+\newcommand{\always}{\raisebox{-.2ex}{
+			   \mbox{\unitlength=0.9ex
+			   \begin{picture}(2,2)
+			   \linethickness{0.06ex}
+			   \put(0,0){\line(1,0){2}}
+			   \put(0,2){\line(1,0){2}}
+			   \put(0,0){\line(0,1){2}}
+			   \put(2,0){\line(0,1){2}}
+			   \end{picture}}}
+		      \,}
+
+\newcommand{\alwaysi}[1]{\raisebox{-.2ex}{
+			   \mbox{\unitlength=0.9ex
+			   \begin{picture}(2,2)
+			   \linethickness{0.06ex}
+			   \put(0,0){\line(1,0){2}}
+			   \put(0,2){\line(1,0){2}}
+			   \put(0,0){\line(0,1){2}}
+			   \put(2,0){\line(0,1){2}}
+                           \put(0.5,0.5){\scriptsize$#1$}
+			   \end{picture}}}}
+
+\newcommand{\nec}[1]{\!\alwaysi{#1}\,}
+\newcommand{\pos}[1]{{	   \mbox{\unitlength=0.9ex
+			   \begin{picture}(2,2)
+			   \linethickness{0.06ex}
+			   \put(0,0){$\sometime$}
+                           \put(0.8,0.4){\tiny$#1$}
+			   \end{picture}}}\,}
+
+%\newcommand{\pos}[1]{\sometime _{#1}}
+\newcommand{\then}{\Rightarrow}
+\newcommand{\onlyif}{\Leftarrow}
+\newcommand{\ifonlyif}{\Leftrightarrow}
+\newcommand{\tvalue}[1]{\mbox{\it #1\/}}
+\newcommand{\constant}[1]{\mbox{\rm\bf #1}}
+\newcommand{\system}[3]{\raisebox{.2ex}[1.2ex]{\raisebox{-.2ex}{{\sf #1}}{$_{#2}^{#3}$}}}
+%\newcommand{\system}[3]{{\sf #1}$_{#2}^{#3}$}
+\newcommand{\set}[1]{\mbox{$\mathcal{#1}$}}
+\newcommand{\WFF}[2]{{\sf WFF}{\mbox{$_{\mbox{\small\sf #1}_{#2}}$}}}
+\newcommand{\know}[1]{\mbox{K$_{#1}\,$}}
+\newcommand{\knownot}[1]{\mbox{$\nec{#1}\neg\,$}}
+\newcommand{\believe}[1]{\mbox{B$_{#1}\,$}}
+\newcommand{\relation}[2]{\mbox{$\mathcal #1$$_{#2}$}}
+%\newcommand{\universal}{\always^{*}}
+\newcommand{\universal}{\always^*}
+\newcommand{\snf}[1]{{\sf SNF}\mbox{$_{\mbox{\scriptsize #1}}$}}
+\newcommand{\binomial}[2]{\left(\! \begin{array}{c}
+                                 #1\\
+                                 #2
+                                 \end{array}
+                          \!\right )}
+\newcommand{\ap}[1]{\alpha(#1)}
+
+\newcommand{\ib}{\bf}
+
+\newcommand{\NKN}{\hbox{\it NKN}}
+\newcommand{\NEW}{\hbox{\it NEW}}
+
+
+\newcommand{\Nat}{\mbox{$\mathbb N$}}
+
+%\newcommand{\comment}[1]{}
+     
+\newcommand{\cfalse}{\constant{false}}
+\newcommand{\ctrue}{\constant{true}}
+\newcommand{\st}{\ensuremath{w}}
+\newcommand{\depth}{\sf profundidade}
+\newcommand{\model}[1]{{\cal #1}}
